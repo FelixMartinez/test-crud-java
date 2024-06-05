@@ -13,6 +13,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit test class for ClienteService.
+ */
 public class ClienteServiceTest {
 
     @Mock
@@ -21,10 +24,16 @@ public class ClienteServiceTest {
     @InjectMocks
     private ClienteService clienteService;
 
+    /**
+     * Initializes the mocks for the test.
+     */
     public ClienteServiceTest() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests the creation of a new Cliente.
+     */
     @Test
     void testCreateCliente() {
         Cliente cliente = new Cliente();
@@ -37,6 +46,9 @@ public class ClienteServiceTest {
         verify(clienteRepository, times(1)).save(cliente);
     }
 
+    /**
+     * Tests the retrieval of a Cliente by ID.
+     */
     @Test
     void testGetClienteById() {
         Cliente cliente = new Cliente();

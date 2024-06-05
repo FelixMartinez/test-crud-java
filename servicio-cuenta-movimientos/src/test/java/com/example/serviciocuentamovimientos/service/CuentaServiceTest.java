@@ -16,6 +16,9 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test class for the CuentaService class.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -27,11 +30,18 @@ class CuentaServiceTest {
     @InjectMocks
     private CuentaService cuentaService;
 
+    /**
+     * Sets up the test environment before each test.
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests the getCuenta method for an existing account.
+     * This test verifies that the account details are returned correctly when the account exists.
+     */
     @Test
     void testGetCuenta() {
         Long cuentaId = 1L;
@@ -45,6 +55,10 @@ class CuentaServiceTest {
         assertThat(result.getNumeroCuenta()).isEqualTo("123456");
     }
 
+    /**
+     * Tests the getCuenta method for a non-existing account.
+     * This test verifies that an exception is thrown with the correct message when the account does not exist.
+     */
     @Test
     void testGetCuentaNotFound() {
         Long cuentaId = 1L;

@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Cliente Persona",
+			"name": "Clientes",
 			"item": [
 				{
 					"name": "GET Cliente",
@@ -132,7 +132,7 @@
 			]
 		},
 		{
-			"name": "Cuenta Movimientos",
+			"name": "Cuentas",
 			"item": [
 				{
 					"name": "GET Cuenta",
@@ -252,6 +252,170 @@
 							]
 						},
 						"description": "Elimina una cuentas existente"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimientos",
+			"item": [
+				{
+					"name": "GET Movimiento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/movimientos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"movimientos",
+								"1"
+							]
+						},
+						"description": "Obtiene cuenta especifica"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Movimientos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/movimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"movimientos"
+							]
+						},
+						"description": "Obtiene todos las cuentas"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Movimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuenta\": {\r\n    \"id\": 1\r\n  },\r\n  \"fecha\": \"2024-01-01T00:00:00Z\",\r\n  \"tipoMovimiento\": \"Debito\",\r\n  \"valor\": -100.0,\r\n  \"saldo\": 900.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/movimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"movimientos"
+							]
+						},
+						"description": "Crea un nuevo cuenta"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Movimiento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fecha\": \"2024-01-02T00:00:00Z\",\r\n  \"tipoMovimiento\": \"Credito\",\r\n  \"valor\": 200.0,\r\n  \"saldo\": 1100.0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/movimientos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"movimientos",
+								"1"
+							]
+						},
+						"description": "Actualiza una cuenta existente"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Movimiento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/movimientos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"movimientos",
+								"1"
+							]
+						},
+						"description": "Elimina una cuentas existente"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "GET Reporte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/reportes?clienteId=1&fechaInicio=2023-01-01&fechaFin=2023-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "clienteId",
+									"value": "1"
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2023-12-31"
+								}
+							]
+						}
 					},
 					"response": []
 				}

@@ -10,6 +10,9 @@ import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Test class for the CuentaListener class.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -21,12 +24,16 @@ public class CuentaListenerTest {
     @Autowired
     private CuentaRepository cuentaRepository;
 
+    /**
+     * Test for the receiveMessage method.
+     * This test sends a message to the CuentaListener and verifies that the corresponding account is created or updated.
+     */
     @Test
     void testReceiveMessage() {
         String message = "1";
         cuentaListener.receiveMessage(message);
 
-        // Verificar que la cuenta ha sido actualizada o creada
+        // Verify that the account has been updated or created
         Cuenta cuenta = cuentaRepository.findById(Long.valueOf(message)).orElse(null);
         assertThat(cuenta).isNotNull();
     }

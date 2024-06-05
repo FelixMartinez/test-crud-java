@@ -15,6 +15,9 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+/**
+ * Unit tests for the CuentaController class.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -26,11 +29,18 @@ class CuentaControllerTest {
     @InjectMocks
     private CuentaController cuentaController;
 
+    /**
+     * Set up the mocks before each test.
+     */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test for getting an existing account by ID.
+     * This test verifies that the correct account details are returned when an account with the specified ID exists.
+     */
     @SuppressWarnings("null")
     @Test
     void testGetCuenta() {
@@ -47,6 +57,10 @@ class CuentaControllerTest {
         assertThat(response.getBody().getNumeroCuenta()).isEqualTo("123456");
     }
 
+    /**
+     * Test for getting a non-existing account by ID.
+     * This test verifies that a 404 status code is returned when an account with the specified ID does not exist.
+     */
     @Test
     void testGetCuentaNotFound() {
         Long cuentaId = 1L;

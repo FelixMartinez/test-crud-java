@@ -9,7 +9,6 @@ public class ClienteListener {
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE)
     public void receiveMessage(String message) {
-        // Lógica para manejar el mensaje recibido
         System.out.println("Received message: " + message);
     }
 }

@@ -15,6 +15,9 @@ import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Integration tests for the CuentaController class.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -26,6 +29,10 @@ class CuentaIntegrationTest {
     @Autowired
     private CuentaRepository cuentaRepository;
 
+    /**
+     * Set up the test data before each test.
+     * This method deletes all existing data and adds a sample account to the database.
+     */
     @BeforeEach
     void setUp() {
         cuentaRepository.deleteAll();
@@ -33,13 +40,17 @@ class CuentaIntegrationTest {
         cuentaRepository.save(cuenta);
     }
 
+    /**
+     * Test for getting an existing account by ID.
+     * This test sends an HTTP GET request to the account endpoint and verifies the response.
+     */
     @SuppressWarnings("null")
     @Test
     void testGetCuenta() {
         Cuenta cuenta = cuentaRepository.findAll().get(0);
         ResponseEntity<Cuenta> response = restTemplate.exchange(
                 "/cuentas/" + cuenta.getId(),
-                HttpMethod.GET,  // Asegúrate de que esto coincida con el método del controlador
+                HttpMethod.GET,
                 HttpEntity.EMPTY,
                 Cuenta.class
         );

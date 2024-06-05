@@ -15,6 +15,9 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Integration test class for the Cliente entity.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 class ClienteIntegrationTest {
@@ -25,6 +28,9 @@ class ClienteIntegrationTest {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    /**
+     * Sets up the test environment by clearing the Cliente repository and adding a test Cliente.
+     */
     @BeforeEach
     void setUp() {
         clienteRepository.deleteAll();
@@ -32,6 +38,9 @@ class ClienteIntegrationTest {
         clienteRepository.save(cliente);
     }
 
+    /**
+     * Tests the retrieval of a Cliente by ID.
+     */
     @SuppressWarnings("null")
     @Test
     void testGetCliente() {

@@ -16,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for the ClienteController.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 public class ClienteControllerTest {
@@ -26,10 +29,16 @@ public class ClienteControllerTest {
     @InjectMocks
     private ClienteController clienteController;
 
+    /**
+     * Constructor to initialize mocks.
+     */
     public ClienteControllerTest() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test method for getClienteById.
+     */
     @SuppressWarnings("null")
     @Test
     void testGetCliente() {
